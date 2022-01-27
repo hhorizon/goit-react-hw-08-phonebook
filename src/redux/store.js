@@ -1,16 +1,13 @@
-import {
-  configureStore,
-  // getDefaultMiddleware
-} from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
-  // FLUSH,
-  // REHYDRATE,
-  // PAUSE,
-  // PERSIST,
-  // PURGE,
-  // REGISTER,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import contactsReducer from './contacts/contacts-reducer';
@@ -28,11 +25,11 @@ const store = configureStore({
     contacts: contactsReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
-  // middleware: getDefaultMiddleware({
-  //   serializableCheck: {
-  //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-  //   },
-  // }),
+  middleware: getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 });
 
 const persistor = persistStore(store);

@@ -1,8 +1,8 @@
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+// import { useDispatch, useSelector } from 'react-redux';
+// import styled from 'styled-components';
 
-import { authOperations, authSelectors } from 'redux/auth';
+// import { authOperations, authSelectors } from 'redux/auth';
 
 export default function HomePage() {
   return (
