@@ -6,8 +6,8 @@ import PrivatRoute from 'views/PrivatRoute';
 import PublicRoute from 'views/PublicRoute';
 import HomePage from 'views/HomePage';
 import ContactsPage from 'views/ContactsPage/ContactsPage';
-import LoginPage from 'views/LoginPage/LoginPage';
-import RegistrationPage from 'views/RegisterPage/RegistrerPage';
+import LoginPage from 'views/LoginPage';
+import RegistrationPage from 'views/RegisterPage';
 
 import { authOperations } from 'redux/auth';
 
@@ -20,9 +20,9 @@ export function App() {
 
   return (
     <>
-      <button type="click" onClick={() => dispatch(authOperations.logOut())}>
+      {/* <button type="click" onClick={() => dispatch(authOperations.logOut())}>
         Log out
-      </button>
+      </button> */}
 
       <Routes>
         <Route
@@ -33,6 +33,7 @@ export function App() {
             </PublicRoute>
           }
         ></Route>
+
         <Route
           path="/login"
           element={
@@ -41,6 +42,7 @@ export function App() {
             </PublicRoute>
           }
         ></Route>
+
         <Route
           path="/register"
           element={
@@ -49,6 +51,7 @@ export function App() {
             </PublicRoute>
           }
         ></Route>
+
         <Route
           path="/contacts"
           element={

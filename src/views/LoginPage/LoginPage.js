@@ -1,6 +1,18 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { IoChevronBackOutline } from 'react-icons/io5';
 import { authOperations } from 'redux/auth';
+import {
+  LoginWrapper,
+  Tittle,
+  Form,
+  Label,
+  Input,
+  Button,
+  RegisterRef,
+} from './LoginPage.styled';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -22,40 +34,52 @@ export default function LoginPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authOperations.logIn({ email, password }));
+    if (email !== '' && password !== '') {
+      dispatch(authOperations.logIn({ email, password }));
+    }
     setEmail('');
     setPassword('');
   };
 
   return (
-    <>
-      <h2>Login</h2>
+    <LoginWrapper>
+      <Tittle>Sign in</Tittle>
 
-      <form onSubmit={handleSubmit}>
-        <label>
+      <Link to="/">
+        <IoChevronBackOutline />
+      </Link>
+
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <Label>
           {' '}
           Email
-          <input
+          <Input
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
           />
-        </label>
+        </Label>
 
-        <label>
+        <Label>
           {' '}
           Password
-          <input
+          <Input
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
           />
-        </label>
+        </Label>
 
-        <button type="submit">Log in</button>
-      </form>
-    </>
+        <p>Forgot Password?</p>
+
+        <Button type="submit">Sign in</Button>
+      </Form>
+
+      <RegisterRef>
+        Don't have an Account? <Link to="/register">Sign Up</Link>
+      </RegisterRef>
+    </LoginWrapper>
   );
 }

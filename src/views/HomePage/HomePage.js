@@ -1,22 +1,19 @@
 import { Link } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import styled from 'styled-components';
-
-// import { authOperations, authSelectors } from 'redux/auth';
+import { HomeWrapepr, Tittle, NavList, NavItem } from './HomePage.styled';
 
 export default function HomePage() {
   return (
-    <>
-      <h1>Contacts</h1>
+    <HomeWrapepr>
+      <Tittle>Phonebook</Tittle>
 
-      <ul>
-        <li>
+      <NavList>
+        <NavItem>
           <Link to="/login">Sing in</Link>
-        </li>
-        <li>
+        </NavItem>
+        <NavItem>
           <Link to="/register">Sing up</Link>
-        </li>
-      </ul>
-    </>
+        </NavItem>
+      </NavList>
+    </HomeWrapepr>
   );
 }

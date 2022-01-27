@@ -1,6 +1,19 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { IoChevronBackOutline } from 'react-icons/io5';
 import { authOperations } from 'redux/auth';
+import {
+  RegisterWrapper,
+  Tittle,
+  Form,
+  Label,
+  LabelAgree,
+  Input,
+  Button,
+  LoginRef,
+} from './RegisterPage.styled';
 
 export default function RegistrationPage() {
   const dispatch = useDispatch();
@@ -33,39 +46,52 @@ export default function RegistrationPage() {
   };
 
   return (
-    <>
-      <h2>Registration</h2>
+    <RegisterWrapper>
+      <Tittle>Sign up</Tittle>
 
-      <form onSubmit={handleSubmit}>
-        <label>
+      <Link to="/">
+        <IoChevronBackOutline />
+      </Link>
+
+      <Form onSubmit={handleSubmit}>
+        <Label>
           Name
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
+          <Input type="text" name="name" value={name} onChange={handleChange} />
+        </Label>
 
-        <label>
+        <Label>
           {' '}
           Email
-          <input
+          <Input
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
           />
-        </label>
+        </Label>
 
-        <label>
+        <Label>
           {' '}
           Password
-          <input
+          <Input
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
           />
-        </label>
+        </Label>
 
-        <button type="submit">Registration</button>
-      </form>
-    </>
+        <LabelAgree>
+          <input type="checkbox" required />I Read and agree to{' '}
+          <span>terms & Conditions</span>
+        </LabelAgree>
+
+        <Button type="submit">Sign up</Button>
+      </Form>
+
+      <LoginRef>
+        Already have an Account? <Link to="/login">Sign In</Link>
+      </LoginRef>
+    </RegisterWrapper>
   );
 }

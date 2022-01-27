@@ -1,8 +1,24 @@
 @import-normalize; /* bring in normalize.css styles */
 
+:root {
+  --white-color: rgba(255, 255, 255, 0.9);
+  --semi-white-color: rgba(255, 255, 255, 0.7);
+  --black-color: rgb(0, 0, 0);
+  --red-gradient: linear-gradient(to right, #e7a788, #e77167);
+  --red-main-color: rgb(231, 113, 103);
+  --red-second-color: rgb(231, 167, 136);
+  --blue-gradient: linear-gradient(to right, #84f0c7, #00a6f4, #292acf);
+  --blue-main-color: rgb(41, 42, 207);
+  --blue-second-color: rgb(132, 240, 199);
+  --green-gradient: linear-gradient(to right, #bce464, #7acc82, #55af92);
+  --green-main-color: rgb(85, 175, 146);
+  --green-second-color: rgb(188, 228, 100);
+}
+
 * {
   margin: 0;
   padding: 0;
+  /* color: var(--black-color); */
 }
 
 body {
@@ -12,7 +28,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to right, #e7a788, #e77167);
+  background-image: url('/src/images/red-fone.jpg');
+  /* background-size: cover; */
+  /* background-image: linear-gradient(to right, #e7a788, #e77167); */
+  /* background-image: linear-gradient(to right, #84f0c7, #00a6f4, #292acf); */
+  /* background-image: linear-gradient(to right, #bce464, #7acc82, #55af92); */
 }
 
 code {
