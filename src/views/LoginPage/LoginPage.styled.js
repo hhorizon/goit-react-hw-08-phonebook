@@ -1,15 +1,31 @@
 import styled from 'styled-components';
+import redFone768 from 'images/red-fone/red-fone-768.jpg';
+
+const Container = styled.div`
+  background: url(${redFone768});
+`;
 
 const LoginWrapper = styled.div`
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 0 20px;
+  height: 100vh;
+
+  @media screen and (min-width: 480px) {
+    width: 440px;
+    margin: 0 auto;
+  }
+`;
+
+const TittleWrapper = styled.div`
+  padding-left: 20px;
+  margin-top: 150px;
 
   & > a {
-    display: block;
-    margin-left: 12px;
+    display: inline-block;
     margin-top: 10px;
-    border: none;
-    background-color: transparent;
+    margin-left: -10px;
 
     & svg {
       color: var(--white-color);
@@ -24,8 +40,6 @@ const LoginWrapper = styled.div`
 `;
 
 const Tittle = styled.h2`
-  padding-left: 20px;
-  margin-top: 150px;
   font-size: 28px;
   font-weight: 600;
   text-transform: uppercase;
@@ -94,4 +108,14 @@ const RegisterRef = styled.p`
     color: var(--red-main-color);
   }
 `;
-export { LoginWrapper, Tittle, Form, Label, Input, Button, RegisterRef };
+export {
+  Container,
+  LoginWrapper,
+  TittleWrapper,
+  Tittle,
+  Form,
+  Label,
+  Input,
+  Button,
+  RegisterRef,
+};

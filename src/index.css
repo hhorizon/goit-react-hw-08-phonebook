@@ -28,7 +28,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('/src/images/red-fone.jpg');
+  /* background-image: url('/src/images/red-fone.jpg'); */
   /* background-size: cover; */
   /* background-image: linear-gradient(to right, #e7a788, #e77167); */
   /* background-image: linear-gradient(to right, #84f0c7, #00a6f4, #292acf); */

@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { authOperations } from 'redux/auth';
 import {
+  Container,
   LoginWrapper,
+  TittleWrapper,
   Tittle,
   Form,
   Label,
@@ -42,44 +44,48 @@ export default function LoginPage() {
   };
 
   return (
-    <LoginWrapper>
-      <Tittle>Sign in</Tittle>
+    <Container>
+      <LoginWrapper>
+        <TittleWrapper>
+          <Tittle>Sign in</Tittle>
 
-      <Link to="/">
-        <IoChevronBackOutline />
-      </Link>
+          <Link to="/">
+            <IoChevronBackOutline />
+          </Link>
+        </TittleWrapper>
 
-      <Form onSubmit={handleSubmit} autoComplete="off">
-        <Label>
-          {' '}
-          Email
-          <Input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </Label>
+        <Form onSubmit={handleSubmit} autoComplete="off">
+          <Label>
+            {' '}
+            Email
+            <Input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </Label>
 
-        <Label>
-          {' '}
-          Password
-          <Input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </Label>
+          <Label>
+            {' '}
+            Password
+            <Input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </Label>
 
-        <p>Forgot Password?</p>
+          <p>Forgot Password?</p>
 
-        <Button type="submit">Sign in</Button>
-      </Form>
+          <Button type="submit">Sign in</Button>
+        </Form>
 
-      <RegisterRef>
-        Don't have an Account? <Link to="/register">Sign Up</Link>
-      </RegisterRef>
-    </LoginWrapper>
+        <RegisterRef>
+          Don't have an Account? <Link to="/register">Sign Up</Link>
+        </RegisterRef>
+      </LoginWrapper>
+    </Container>
   );
 }

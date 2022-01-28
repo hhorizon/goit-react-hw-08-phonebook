@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import PrivatRoute from 'views/PrivatRoute';
 import PublicRoute from 'views/PublicRoute';
 import HomePage from 'views/HomePage';
-import ContactsPage from 'views/ContactsPage/ContactsPage';
 import LoginPage from 'views/LoginPage';
 import RegistrationPage from 'views/RegisterPage';
+import ContactsPage from 'views/ContactsPage';
 
 import { authOperations } from 'redux/auth';
 
