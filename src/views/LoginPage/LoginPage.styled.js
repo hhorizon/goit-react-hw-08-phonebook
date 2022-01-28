@@ -49,7 +49,7 @@ const Tittle = styled.h2`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
+  /* margin-top: 150px; */
   padding: 0 40px;
 
   & p {
@@ -98,7 +98,7 @@ const Button = styled.button`
 `;
 
 const RegisterRef = styled.p`
-  margin-top: 50px;
+  /* margin-top: 50px; */
   margin-bottom: 30px;
   text-align: center;
   font-size: 16px;

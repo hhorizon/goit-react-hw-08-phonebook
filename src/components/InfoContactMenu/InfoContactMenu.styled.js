@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
-const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+const List = styled.ul`
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+`;
+
+const Item = styled.li`
+  &:not(:last-child) {
+    margin-right: 35px;
+  }
 `;
 
 const ExitBtn = styled.button`
@@ -30,6 +35,21 @@ const ExitBtn = styled.button`
   }
 `;
 
+const DeleteBtn = styled.button`
+  position: fixed;
+  top: 5px;
+  right: 10px;
+  padding: 5px;
+  border: none;
+  color: var(--semi-white-color);
+  background-color: transparent;
+
+  & svg {
+    height: 30px;
+    width: 30px;
+  }
+`;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -46,6 +66,7 @@ const Form = styled.form`
 
   & img {
     border-radius: 50%;
+    margin-bottom: 20px;
   }
 
   @media screen and (min-width: 480px) {
@@ -80,20 +101,16 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  position: absolute;
-  bottom: -70px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline;
-  margin: 0 auto;
-  padding: 15px 80px;
+  padding: 5px;
   border: none;
-  border-radius: 35px;
-  color: var(--white-color);
+  border-radius: 20px;
+  color: var(--semi-white-color);
   background-image: var(--red-gradient);
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
+
+  & svg {
+    height: 40px;
+    width: 40px;
+  }
 `;
 
-export { Backdrop, ExitBtn, Form, Label, Input, Button };
+export { List, Item, ExitBtn, DeleteBtn, Form, Label, Input, Button };

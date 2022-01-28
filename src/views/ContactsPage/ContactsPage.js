@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
 
 import { IoIosAddCircle } from 'react-icons/io';
 import { contactsOperations } from 'redux/contacts';
 import ContactsBar from 'components/ContactsBar';
 import Filter from 'components/Filter';
-import ContactsList from 'components/ContactsList/ContactsList';
-import AddModal from 'components/AddModal';
+import ContactsList from 'components/ContactsList';
+import Modal from 'components/Modal';
+import AddContactMenu from 'components/AddContactMenu';
+import {
+  Container,
+  ThemeWrapper,
+  ContactsWrapepr,
+  AddBtn,
+} from './ContactsPage.styled';
 
 export default function ContactsPage() {
   const dispatch = useDispatch();
@@ -32,37 +38,12 @@ export default function ContactsPage() {
           </AddBtn>
         </ThemeWrapper>
         <ContactsList />
-        {showAddModal && <AddModal closeModal={closeAddModal} />}
+        {showAddModal && (
+          <Modal closeModal={closeAddModal}>
+            <AddContactMenu closeModal={closeAddModal} />
+          </Modal>
+        )}
       </ContactsWrapepr>
     </Container>
   );
 }
-
-const Container = styled.div``;
-
-const ThemeWrapper = styled.div`
-  background-image: var(--red-gradient);
-`;
-
-const ContactsWrapepr = styled.div`
-  height: 100vh;
-
-  @media screen and (min-width: 480px) {
-    width: 480px;
-    margin: 0 auto;
-  }
-`;
-
-const AddBtn = styled.button`
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  border: none;
-  background-color: transparent;
-
-  & svg {
-    color: var(--red-main-color);
-    width: 60px;
-    height: 60px;
-  }
-`;

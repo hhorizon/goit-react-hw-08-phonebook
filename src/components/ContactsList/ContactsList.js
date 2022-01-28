@@ -1,27 +1,43 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import { contactsOperations, contactsSelectors } from 'redux/contacts';
+import { contactsSelectors } from 'redux/contacts';
+import ContactsListItem from 'components/ContactsListItem';
+import Modal from 'components/Modal';
+import InfoContactMenu from 'components/InfoContactMenu';
+import { List } from './ContactsList.styled';
 
 export default function ContactsList() {
-  const dispatch = useDispatch();
+  const [selectedContact, setSelectedContact] = useState(null);
   const contacts = useSelector(contactsSelectors.getContacts);
-  console.log(contacts);
+
+  const openInfoModal = selectedContact => {
+    setSelectedContact(selectedContact);
+  };
+
+  const closeInfoModal = () => {
+    setSelectedContact(null);
+  };
 
   return (
-    <>
+    <List>
       {contacts &&
         contacts.map(contact => (
-          <div key={contact.id}>
-            <p>{contact.name}</p>
-            <button
-              onClick={() =>
-                dispatch(contactsOperations.deleteContact(contact.id))
-              }
-            >
-              Delete
-            </button>
-          </div>
+          <ContactsListItem
+            key={contact.id}
+            contact={contact}
+            openModal={openInfoModal}
+          />
         ))}
-    </>
+
+      {selectedContact && (
+        <Modal closeModal={closeInfoModal}>
+          <InfoContactMenu
+            closeModal={closeInfoModal}
+            contact={selectedContact}
+          />
+        </Modal>
+      )}
+    </List>
   );
 }

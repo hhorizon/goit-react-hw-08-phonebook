@@ -36,3 +36,18 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
+
+export const changeContact = createAsyncThunk(
+  'contacts/changeContact',
+  async changedContact => {
+    try {
+      await axios.patch(
+        `/contacts/${changedContact.id}`,
+        changedContact.contact
+      );
+      return changedContact;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);

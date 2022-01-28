@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PrivatRoute from 'views/PrivatRoute';
 import PublicRoute from 'views/PublicRoute';
@@ -9,21 +9,21 @@ import LoginPage from 'views/LoginPage';
 import RegistrationPage from 'views/RegisterPage';
 import ContactsPage from 'views/ContactsPage';
 
-import { authOperations } from 'redux/auth';
+import { authOperations, authSelectors } from 'redux/auth';
 
 export function App() {
   const dispatch = useDispatch();
+
+  const isFetchingCurrentUser = useSelector(
+    authSelectors.getIsFetchingCurrentUser
+  );
 
   useEffect(() => {
     dispatch(authOperations.refreshCurrentUser());
   }, [dispatch]);
 
   return (
-    <>
-      {/* <button type="click" onClick={() => dispatch(authOperations.logOut())}>
-        Log out
-      </button> */}
-
+    !isFetchingCurrentUser && (
       <Routes>
         <Route
           path="/"
@@ -61,6 +61,6 @@ export function App() {
           }
         ></Route>
       </Routes>
-    </>
+    )
   );
 }

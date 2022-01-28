@@ -12,7 +12,7 @@ const Backdrop = styled.div`
 const ExitBtn = styled.button`
   position: fixed;
   top: 20px;
-  left: 20%;
+  left: 15%;
   border: none;
   background-color: transparent;
   outline: none;
