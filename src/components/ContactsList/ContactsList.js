@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-// import styled from 'styled-components';
 
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
 
