@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 
 import { contactsOperations } from 'redux/contacts';
 import { IoChevronBackOutline } from 'react-icons/io5';
@@ -27,6 +28,7 @@ export default function AddContactMenu({ closeModal }) {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(contactsOperations.addContact({ name, number }));
+    toast.success(`Contact ${name} has been added.`);
     setName('');
     setNumber('');
     closeModal();

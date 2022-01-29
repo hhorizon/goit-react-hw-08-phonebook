@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import redFone768 from 'images/red-fone/red-fone-768.jpg';
+import fone768 from 'images/fone-768.jpg';
 
 const Container = styled.div`
   padding: 0 20px;
-  background: url(${redFone768});
+  background-image: url(${fone768});
+  background-size: cover;
 `;
 
 const RegisterWrapper = styled.div`
@@ -34,7 +35,7 @@ const TittleWrapper = styled.div`
     }
 
     &:hover svg {
-      color: var(--red-main-color);
+      color: ${props => props.theme.mainColor};
     }
   }
 `;
@@ -49,7 +50,6 @@ const Tittle = styled.h2`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  /* margin-top: 150px; */
   padding: 0 40px;
 
   & span {
@@ -81,7 +81,7 @@ const LabelAgree = styled(Label)`
 
   & span {
     font-size: 12px;
-    color: var(--red-main-color);
+    color: ${props => props.theme.mainColor};
   }
 `;
 
@@ -100,11 +100,12 @@ const Input = styled.input`
 const Button = styled.button`
   display: inline;
   margin: 0 auto;
-  padding: 15px 80px;
+  padding: 15px 0;
+  width: 250px;
   border: none;
   border-radius: 35px;
   color: var(--white-color);
-  background-image: var(--red-gradient);
+  background-image: ${props => props.theme.mainGradient};
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
@@ -118,7 +119,7 @@ const LoginRef = styled.p`
   color: var(--semi-white-color);
 
   & a {
-    color: var(--red-main-color);
+    color: ${props => props.theme.mainColor};
   }
 `;
 export {

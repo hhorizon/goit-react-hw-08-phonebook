@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 
 import { contactsOperations } from 'redux/contacts';
 import { IoChevronBackOutline } from 'react-icons/io5';
-import { FiPhoneCall, FiMessageSquare, FiSave } from 'react-icons/fi';
+import { FiSave } from 'react-icons/fi';
 import { AiFillDelete } from 'react-icons/ai';
+import { RiMessage2Fill, RiPhoneFill } from 'react-icons/ri';
 import avatar from 'images/contact-avatar.png';
 import {
   List,
@@ -39,11 +41,13 @@ export default function InfoContactMenu({ contact, closeModal }) {
     e.preventDefault();
     const changedContact = { id: contact.id, contact: { name, number } };
     dispatch(contactsOperations.changeContact(changedContact));
+    toast.success(`Contact ${name} has been changed.`);
     closeModal();
   };
 
   const handleDeleteContact = () => {
     dispatch(contactsOperations.deleteContact(contact.id));
+    toast.success(`Contact ${contact.name} has been deleted.`);
     closeModal();
   };
 
@@ -86,12 +90,12 @@ export default function InfoContactMenu({ contact, closeModal }) {
       <List>
         <Item>
           <Button type="button">
-            <FiPhoneCall />
+            <RiPhoneFill />
           </Button>
         </Item>
         <Item>
           <Button type="button">
-            <FiMessageSquare />
+            <RiMessage2Fill />
           </Button>
         </Item>
         <Item>

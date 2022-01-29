@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import redFone768 from 'images/red-fone/red-fone-768.jpg';
+import fone768 from 'images/fone-768.jpg';
 
 const Container = styled.div`
   padding: 0 20px;
-  background: url(${redFone768});
+  background-image: url(${fone768});
+  background-size: cover;
 `;
 
 const HomeWrapper = styled.div`
@@ -37,11 +38,12 @@ const NavItem = styled.li`
 
   & a {
     display: inline-block;
-    padding: 15px 100px;
+    padding: 15px 0;
+    width: 250px;
     border: none;
     border-radius: 35px;
     color: var(--white-color);
-    background-image: var(--red-gradient);
+    background-image: ${props => props.theme.mainGradient};
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;

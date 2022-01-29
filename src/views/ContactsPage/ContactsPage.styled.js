@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Container = styled.div``;
 
 const ThemeWrapper = styled.div`
-  background-image: var(--red-gradient);
+  background-image: ${props => props.theme.mainGradient};
 `;
 
 const ContactsWrapepr = styled.div`
@@ -23,7 +23,7 @@ const AddBtn = styled.button`
   background-color: transparent;
 
   & svg {
-    color: var(--red-main-color);
+    color: #0ae762;
     width: 60px;
     height: 60px;
   }

@@ -19,7 +19,7 @@ const ExitBtn = styled.button`
 
   &:hover svg,
   &:focus svg {
-    color: var(--red-main-color);
+    color: ${props => props.theme.mainColor};
     transform: scale(1.5);
   }
 
@@ -35,10 +35,10 @@ const UserMenuList = styled.ul`
   top: 0;
   right: 0;
   width: 60%;
-  padding: 15px 5%;
+  padding: 25px 5% 10px;
   text-align: center;
-  background-image: var(--red-gradient);
-  border-bottom-left-radius: 50px;
+  background-image: ${props => props.theme.mainGradient};
+  border-bottom-left-radius: 30px;
 `;
 
 const UserMenuImg = styled.li`
@@ -71,22 +71,22 @@ const UserMenuTheme = styled.ul`
   border-bottom: 1px solid var(--semi-white-color);
 
   & li:nth-child(1) button {
-    background-color: var(--red-main-color);
+    background-color: var(--fiolet-color);
     margin-right: 5px;
   }
 
   & li:nth-child(2) button {
-    background-color: var(--green-main-color);
+    background-color: var(--blue-color);
     margin-right: 5px;
   }
 
   & li:nth-child(3) button {
-    background-color: var(--blue-main-color);
+    background-color: var(--green-color);
   }
 
   & button {
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 25px;
     border: none;
     border-radius: 7px;
     outline: none;
@@ -99,6 +99,9 @@ const UserMenuTheme = styled.ul`
 `;
 
 const UserMenuExitBtn = styled.li`
+  text-align: end;
+  margin-right: 5px;
+
   & button {
     border: none;
     background-color: transparent;
@@ -106,7 +109,7 @@ const UserMenuExitBtn = styled.li`
 
     &:hover svg,
     &:focus svg {
-      color: var(--red-main-color);
+      color: ${props => props.theme.mainColor};
       transform: scale(1.3);
     }
 

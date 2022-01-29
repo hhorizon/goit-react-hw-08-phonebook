@@ -9,7 +9,7 @@ import { List } from './ContactsList.styled';
 
 export default function ContactsList() {
   const [selectedContact, setSelectedContact] = useState(null);
-  const contacts = useSelector(contactsSelectors.getContacts);
+  const contacts = useSelector(contactsSelectors.getVisibleContacts);
 
   const openInfoModal = selectedContact => {
     setSelectedContact(selectedContact);

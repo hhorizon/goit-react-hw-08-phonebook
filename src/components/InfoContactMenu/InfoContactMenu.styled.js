@@ -1,19 +1,5 @@
 import styled from 'styled-components';
 
-const List = styled.ul`
-  position: absolute;
-  bottom: -70px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-`;
-
-const Item = styled.li`
-  &:not(:last-child) {
-    margin-right: 35px;
-  }
-`;
-
 const ExitBtn = styled.button`
   position: fixed;
   top: -70px;
@@ -24,7 +10,7 @@ const ExitBtn = styled.button`
 
   &:hover svg,
   &:focus svg {
-    color: var(--red-main-color);
+    color: ${props => props.theme.mainColor};
     transform: scale(1.5);
   }
 
@@ -61,7 +47,7 @@ const Form = styled.form`
   width: 73vw;
   padding: 20px;
   padding-right: 35px;
-  background-image: var(--red-gradient);
+  background-image: ${props => props.theme.mainGradient};
   border-radius: 30px;
 
   & img {
@@ -100,17 +86,40 @@ const Input = styled.input`
   outline: none;
 `;
 
-const Button = styled.button`
-  padding: 5px;
-  border: none;
-  border-radius: 20px;
-  color: var(--semi-white-color);
-  background-image: var(--red-gradient);
+const List = styled.ul`
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+`;
 
-  & svg {
-    height: 40px;
-    width: 40px;
+const Item = styled.li`
+  &:not(:last-child) {
+    margin-right: 35px;
+  }
+
+  &:nth-child(1) button {
+    background-color: #0ae762;
+  }
+  &:nth-child(2) button {
+    background-color: #f6e641;
+  }
+  &:nth-child(3) button {
+    background-color: #0073ff;
   }
 `;
 
-export { List, Item, ExitBtn, DeleteBtn, Form, Label, Input, Button };
+const Button = styled.button`
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  color: var(--semi-white-color);
+
+  & svg {
+    height: 25px;
+    width: 25px;
+  }
+`;
+
+export { ExitBtn, DeleteBtn, Form, Label, Input, Button, List, Item };

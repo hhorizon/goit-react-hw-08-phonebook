@@ -10,7 +10,7 @@ const ExitBtn = styled.button`
 
   &:hover svg,
   &:focus svg {
-    color: var(--red-main-color);
+    color: ${props => props.theme.mainColor};
     transform: scale(1.5);
   }
 
@@ -32,7 +32,7 @@ const Form = styled.form`
   width: 73vw;
   padding: 20px;
   padding-right: 35px;
-  background-image: var(--red-gradient);
+  background-image: ${props => props.theme.mainGradient};
   border-radius: 30px;
 
   & img {
@@ -82,7 +82,7 @@ const Button = styled.button`
   border: none;
   border-radius: 35px;
   color: var(--white-color);
-  background-image: var(--red-gradient);
+  background-color: #0ae762;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;

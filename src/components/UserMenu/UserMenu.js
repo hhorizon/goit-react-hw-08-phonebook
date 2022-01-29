@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { authOperations, authSelectors } from 'redux/auth';
+import { themeActions } from 'redux/theme';
 import { ImExit } from 'react-icons/im';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import avatar from 'images/user-avatar.png';
@@ -20,6 +21,10 @@ import {
 const modalRoot = document.querySelector('#modal-root');
 
 export default function UserMenu({ closeModal }) {
+  const dispatch = useDispatch();
+  const userName = useSelector(authSelectors.getUserName);
+  const userEmail = useSelector(authSelectors.getUserEmail);
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -41,9 +46,41 @@ export default function UserMenu({ closeModal }) {
     }
   };
 
-  const dispatch = useDispatch();
-  const userName = useSelector(authSelectors.getUserName);
-  const userEmail = useSelector(authSelectors.getUserEmail);
+  const handleChangeTheme = e => {
+    const { name: color } = e.target;
+
+    switch (color) {
+      case 'fiolet':
+        return dispatch(
+          themeActions.changeTheme({
+            mainTheme: 'fiolet',
+            mainGradient: 'linear-gradient(to right, #131111, #43225e)',
+            mainColor: '#43225e',
+          })
+        );
+
+      case 'blue':
+        return dispatch(
+          themeActions.changeTheme({
+            mainTheme: 'blue',
+            mainGradient: 'linear-gradient(to right, #84f0c7, #292acf)',
+            mainColor: '#292acf',
+          })
+        );
+
+      case 'green':
+        return dispatch(
+          themeActions.changeTheme({
+            mainTheme: 'green',
+            mainGradient: 'linear-gradient(to right, #bce464, #55af92)',
+            mainColor: '#55af92',
+          })
+        );
+
+      default:
+        return;
+    }
+  };
 
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
@@ -60,13 +97,16 @@ export default function UserMenu({ closeModal }) {
         <li>
           <UserMenuTheme>
             <li>
-              <button></button>
+              <button
+                name="fiolet"
+                onClick={e => handleChangeTheme(e)}
+              ></button>
             </li>
             <li>
-              <button></button>
+              <button name="blue" onClick={e => handleChangeTheme(e)}></button>
             </li>
             <li>
-              <button></button>
+              <button name="green" onClick={e => handleChangeTheme(e)}></button>
             </li>
           </UserMenuTheme>
         </li>

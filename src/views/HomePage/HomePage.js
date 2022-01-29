@@ -1,29 +1,26 @@
 import { Link } from 'react-router-dom';
-import {
-  Container,
-  HomeWrapper,
-  Tittle,
-  NavList,
-  NavItem,
-} from './HomePage.styled';
+import { useMediaQuery } from 'react-responsive';
+import * as S from './HomePage.styled';
 
 export default function HomePage() {
-  return (
-    <>
-      <Container>
-        <HomeWrapper>
-          <Tittle>Phonebook</Tittle>
+  const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
 
-          <NavList>
-            <NavItem>
-              <Link to="/login">Sing in</Link>
-            </NavItem>
-            <NavItem>
+  return (
+    !isDesktop && (
+      <S.Container>
+        <S.HomeWrapper>
+          <S.Tittle>Phonebook</S.Tittle>
+
+          <S.NavList>
+            <S.NavItem>
+              <Link to="/login">Login</Link>
+            </S.NavItem>
+            <S.NavItem>
               <Link to="/register">Sing up</Link>
-            </NavItem>
-          </NavList>
-        </HomeWrapper>
-      </Container>
-    </>
+            </S.NavItem>
+          </S.NavList>
+        </S.HomeWrapper>
+      </S.Container>
+    )
   );
 }

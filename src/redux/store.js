@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth';
 import { contactsReducer } from './contacts';
+import { themeReducer } from './theme';
 
 const authPersistConfig = {
   key: 'auth',
@@ -19,10 +20,17 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const themePersistConfig = {
+  key: 'theme',
+  storage,
+  whitelist: ['mainTheme', 'mainGradient', 'mainColor'],
+};
+
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     contacts: contactsReducer,
+    theme: persistReducer(themePersistConfig, themeReducer),
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: getDefaultMiddleware({
