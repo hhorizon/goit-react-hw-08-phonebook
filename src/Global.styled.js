@@ -5,15 +5,6 @@ const Global = createGlobalStyle`
   --white-color: rgba(255, 255, 255, 0.9);
   --semi-white-color: rgba(255, 255, 255, 0.7);
   --black-color: rgb(0, 0, 0);
-
-  --fiolet-color: #43225e;
-  /* #131111 */
-
-  --blue-color: #292acf;
-  /* #84f0c7 */
-
-  --green-color: #55af92;
-  /* #bce464 */
 }
 
 * {

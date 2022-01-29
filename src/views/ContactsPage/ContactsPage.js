@@ -10,7 +10,7 @@ import Modal from 'components/Modal';
 import AddContactMenu from 'components/AddContactMenu';
 import {
   Container,
-  ThemeWrapper,
+  BarWrapper,
   ContactsWrapepr,
   AddBtn,
 } from './ContactsPage.styled';
@@ -30,13 +30,13 @@ export default function ContactsPage() {
   return (
     <Container>
       <ContactsWrapepr>
-        <ThemeWrapper>
+        <BarWrapper>
           <ContactsBar />
           <Filter />
           <AddBtn onClick={() => setShowAddModal(true)}>
             <IoIosAddCircle />
           </AddBtn>
-        </ThemeWrapper>
+        </BarWrapper>
         <ContactsList />
         {showAddModal && (
           <Modal closeModal={closeAddModal}>

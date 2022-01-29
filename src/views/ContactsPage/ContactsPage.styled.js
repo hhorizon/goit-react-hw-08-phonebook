@@ -2,10 +2,6 @@ import styled from 'styled-components';
 
 const Container = styled.div``;
 
-const ThemeWrapper = styled.div`
-  background-image: ${props => props.theme.mainGradient};
-`;
-
 const ContactsWrapepr = styled.div`
   height: 100vh;
 
@@ -13,6 +9,10 @@ const ContactsWrapepr = styled.div`
     width: 480px;
     margin: 0 auto;
   }
+`;
+
+const BarWrapper = styled.div`
+  background-image: ${props => props.theme.mainGradient};
 `;
 
 const AddBtn = styled.button`
@@ -29,4 +29,4 @@ const AddBtn = styled.button`
   }
 `;
 
-export { Container, ThemeWrapper, ContactsWrapepr, AddBtn };
+export { Container, BarWrapper, ContactsWrapepr, AddBtn };

@@ -30,6 +30,10 @@ const Input = styled.input`
   border: 1px solid;
   border-radius: 50px;
   outline: none;
+
+  &::placeholder {
+    color: var(--semi-white-color);
+  }
 `;
 
 export { StyledFilter, Input };

@@ -63,8 +63,8 @@ export default function UserMenu({ closeModal }) {
         return dispatch(
           themeActions.changeTheme({
             mainTheme: 'blue',
-            mainGradient: 'linear-gradient(to right, #84f0c7, #292acf)',
-            mainColor: '#292acf',
+            mainGradient: 'linear-gradient(to right, #225B8E, #45c5de)',
+            mainColor: '#225B8E',
           })
         );
 
@@ -72,8 +72,28 @@ export default function UserMenu({ closeModal }) {
         return dispatch(
           themeActions.changeTheme({
             mainTheme: 'green',
-            mainGradient: 'linear-gradient(to right, #bce464, #55af92)',
+            mainGradient:
+              'linear-gradient(to right, #55af92, #7acc82, #bce464)',
             mainColor: '#55af92',
+          })
+        );
+
+      case 'pink':
+        return dispatch(
+          themeActions.changeTheme({
+            mainTheme: 'pink',
+            mainGradient:
+              'linear-gradient(to right, #fd0cb2, #e2229c, #3f51b5)',
+            mainColor: '#fd0cb2',
+          })
+        );
+
+      case 'red':
+        return dispatch(
+          themeActions.changeTheme({
+            mainTheme: 'red',
+            mainGradient: 'linear-gradient(to right, #FF3535, #51055a)',
+            mainColor: '#FF3535',
           })
         );
 
@@ -107,6 +127,12 @@ export default function UserMenu({ closeModal }) {
             </li>
             <li>
               <button name="green" onClick={e => handleChangeTheme(e)}></button>
+            </li>
+            <li>
+              <button name="pink" onClick={e => handleChangeTheme(e)}></button>
+            </li>
+            <li>
+              <button name="red" onClick={e => handleChangeTheme(e)}></button>
             </li>
           </UserMenuTheme>
         </li>

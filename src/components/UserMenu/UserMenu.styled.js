@@ -71,23 +71,39 @@ const UserMenuTheme = styled.ul`
   border-bottom: 1px solid var(--semi-white-color);
 
   & li:nth-child(1) button {
-    background-color: var(--fiolet-color);
+    /* fiolet */
+    background-color: #43225e;
     margin-right: 5px;
   }
 
   & li:nth-child(2) button {
-    background-color: var(--blue-color);
+    /* blue */
+    background-color: #45c5de;
     margin-right: 5px;
   }
 
   & li:nth-child(3) button {
-    background-color: var(--green-color);
+    /* green */
+    background-color: #bce464;
+    margin-right: 5px;
+  }
+
+  & li:nth-child(4) button {
+    /* pink */
+    background-color: #fd0cb2;
+    margin-right: 5px;
+  }
+
+  & li:nth-child(5) button {
+    /* red */
+    background-color: #ff3535;
   }
 
   & button {
     height: 35px;
     width: 25px;
-    border: none;
+    border: 1px solid var(--semi-white-color);
+    /* border: none; */
     border-radius: 7px;
     outline: none;
 

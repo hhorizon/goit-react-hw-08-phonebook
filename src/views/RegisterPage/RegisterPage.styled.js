@@ -87,7 +87,7 @@ export const Form = styled.form`
   padding: 0 40px;
 
   @media screen and (min-width: 768px) {
-    width: 400px;
+    width: 360px;
     margin: 0 auto;
   }
 `;
@@ -142,7 +142,6 @@ export const Button = styled.button`
 `;
 
 export const LoginRef = styled.p`
-  /* margin-top: 50px; */
   margin-bottom: 30px;
   text-align: center;
   font-size: 16px;
