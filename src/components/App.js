@@ -8,7 +8,7 @@ import PrivatRoute from 'views/PrivatRoute';
 import PublicRoute from 'views/PublicRoute';
 import HomePage from 'views/HomePage';
 import LoginPage from 'views/LoginPage';
-import RegistrationPage from 'views/RegisterPage';
+import RegisterPage from 'views/RegisterPage';
 import ContactsPage from 'views/ContactsPage';
 import { authOperations, authSelectors } from 'redux/auth';
 import { themeSelectors } from 'redux/theme';
@@ -51,7 +51,7 @@ export function App() {
             path="/register"
             element={
               <PublicRoute restricted>
-                <RegistrationPage />
+                <RegisterPage />
               </PublicRoute>
             }
           ></Route>

@@ -4,17 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { authOperations } from 'redux/auth';
-import {
-  Container,
-  LoginWrapper,
-  TittleWrapper,
-  Tittle,
-  Form,
-  Label,
-  Input,
-  Button,
-  RegisterRef,
-} from './LoginPage.styled';
+import * as S from './LoginPage.styled';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -44,48 +34,48 @@ export default function LoginPage() {
   };
 
   return (
-    <Container>
-      <LoginWrapper>
-        <TittleWrapper>
-          <Tittle>Sign in</Tittle>
+    <S.Container>
+      <S.LoginWrapper>
+        <S.TittleWrapper>
+          <S.Tittle>Login</S.Tittle>
 
           <Link to="/">
             <IoChevronBackOutline />
           </Link>
-        </TittleWrapper>
+        </S.TittleWrapper>
 
-        <Form onSubmit={handleSubmit} autoComplete="off">
-          <Label>
+        <S.Form onSubmit={handleSubmit} autoComplete="off">
+          <S.Label>
             {' '}
             Email
-            <Input
+            <S.Input
               type="email"
               name="email"
               value={email}
               onChange={handleChange}
             />
-          </Label>
+          </S.Label>
 
-          <Label>
+          <S.Label>
             {' '}
             Password
-            <Input
+            <S.Input
               type="password"
               name="password"
               value={password}
               onChange={handleChange}
             />
-          </Label>
+          </S.Label>
 
           <p>Forgot Password?</p>
 
-          <Button type="submit">Sign in</Button>
-        </Form>
+          <S.Button type="submit">Sign in</S.Button>
+        </S.Form>
 
-        <RegisterRef>
+        <S.RegisterRef>
           Don't have an Account? <Link to="/register">Sign Up</Link>
-        </RegisterRef>
-      </LoginWrapper>
-    </Container>
+        </S.RegisterRef>
+      </S.LoginWrapper>
+    </S.Container>
   );
 }

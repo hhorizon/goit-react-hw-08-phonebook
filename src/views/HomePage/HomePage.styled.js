@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 import fone768 from 'images/fone-768.jpg';
+import fone1200 from 'images/fone-1200.jpg';
 
-const Container = styled.div`
+export const Container = styled.div`
   padding: 0 20px;
   background-image: url(${fone768});
   background-size: cover;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    background-image: url(${fone1200});
+    height: 100vh;
+    padding: 0;
+  }
 `;
 
-const HomeWrapper = styled.div`
+export const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,23 +23,49 @@ const HomeWrapper = styled.div`
 
   @media screen and (min-width: 480px) {
     width: 440px;
-    margin: 0 auto;
+    margin: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    height: 80vh;
+    border-radius: 20px;
+    background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    );
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 1100px;
   }
 `;
 
-const Tittle = styled.h1`
+export const Tittle = styled.h1`
   margin-top: 40px;
   font-size: 38px;
   font-weight: 600;
   color: var(--white-color);
+
+  @media screen and (min-width: 768px) {
+    margin-top: 60px;
+    margin-left: 80px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-top: 60px;
+    margin-left: 160px;
+    font-size: 42px;
+  }
 `;
 
-const NavList = styled.ul`
+export const NavList = styled.ul`
   margin-bottom: 125px;
   text-align: center;
 `;
 
-const NavItem = styled.li`
+export const NavItem = styled.li`
   &:last-child {
     margin-top: 25px;
   }
@@ -49,5 +83,3 @@ const NavItem = styled.li`
     text-transform: uppercase;
   }
 `;
-
-export { Container, HomeWrapper, Tittle, NavList, NavItem };

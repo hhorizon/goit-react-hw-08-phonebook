@@ -4,20 +4,9 @@ import { Link } from 'react-router-dom';
 
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { authOperations } from 'redux/auth';
-import {
-  Container,
-  RegisterWrapper,
-  TittleWrapper,
-  Tittle,
-  Form,
-  Label,
-  LabelAgree,
-  Input,
-  Button,
-  LoginRef,
-} from './RegisterPage.styled';
+import * as S from './RegisterPage.styled';
 
-export default function RegistrationPage() {
+export default function RegisterPage() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -48,61 +37,61 @@ export default function RegistrationPage() {
   };
 
   return (
-    <Container>
-      <RegisterWrapper>
-        <TittleWrapper>
-          <Tittle>Sign up</Tittle>
+    <S.Container>
+      <S.RegisterWrapper>
+        <S.TittleWrapper>
+          <S.Tittle>Sign up</S.Tittle>
 
           <Link to="/">
             <IoChevronBackOutline />
           </Link>
-        </TittleWrapper>
+        </S.TittleWrapper>
 
-        <Form onSubmit={handleSubmit}>
-          <Label>
+        <S.Form onSubmit={handleSubmit}>
+          <S.Label>
             Name
-            <Input
+            <S.Input
               type="text"
               name="name"
               value={name}
               onChange={handleChange}
             />
-          </Label>
+          </S.Label>
 
-          <Label>
+          <S.Label>
             {' '}
             Email
-            <Input
+            <S.Input
               type="email"
               name="email"
               value={email}
               onChange={handleChange}
             />
-          </Label>
+          </S.Label>
 
-          <Label>
+          <S.Label>
             {' '}
             Password
-            <Input
+            <S.Input
               type="password"
               name="password"
               value={password}
               onChange={handleChange}
             />
-          </Label>
+          </S.Label>
 
-          <LabelAgree>
+          <S.LabelAgree>
             <input type="checkbox" required />I Read and agree to{' '}
             <span>terms & Conditions</span>
-          </LabelAgree>
+          </S.LabelAgree>
 
-          <Button type="submit">Sign up</Button>
-        </Form>
+          <S.Button type="submit">Sign up</S.Button>
+        </S.Form>
 
-        <LoginRef>
+        <S.LoginRef>
           Already have an Account? <Link to="/login">Sign In</Link>
-        </LoginRef>
-      </RegisterWrapper>
-    </Container>
+        </S.LoginRef>
+      </S.RegisterWrapper>
+    </S.Container>
   );
 }

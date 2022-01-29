@@ -1,27 +1,61 @@
 import styled from 'styled-components';
 import fone768 from 'images/fone-768.jpg';
+import fone1200 from 'images/fone-1200.jpg';
 
-const Container = styled.div`
-  padding: 0 20px;
+export const Container = styled.div`
+  /* padding: 0 20px; */
   background-image: url(${fone768});
   background-size: cover;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    background-image: url(${fone1200});
+    height: 100vh;
+    padding: 0;
+  }
 `;
 
-const RegisterWrapper = styled.div`
+export const RegisterWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0 20px;
   height: 100vh;
 
   @media screen and (min-width: 480px) {
     width: 440px;
-    margin: 0 auto;
+    margin: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    height: 80vh;
+    padding: 0;
+    border-radius: 20px;
+    background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    );
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 1100px;
   }
 `;
 
-const TittleWrapper = styled.div`
+export const TittleWrapper = styled.div`
   padding-left: 20px;
   margin-top: 150px;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 60px;
+    margin-top: 50px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-left: 100px;
+  }
 
   & > a {
     display: inline-block;
@@ -40,29 +74,25 @@ const TittleWrapper = styled.div`
   }
 `;
 
-const Tittle = styled.h2`
+export const Tittle = styled.h2`
   font-size: 28px;
   font-weight: 600;
   text-transform: uppercase;
   color: var(--white-color);
 `;
 
-const Form = styled.form`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   padding: 0 40px;
 
-  & span {
-    margin-top: 10px;
-    margin-bottom: 40px;
-    text-align: end;
-    font-size: 16px;
-    color: var(--semi-white-color);
-    cursor: pointer;
+  @media screen and (min-width: 768px) {
+    width: 400px;
+    margin: 0 auto;
   }
 `;
 
-const Label = styled.label`
+export const Label = styled.label`
   display: block;
   font-size: 16px;
   color: var(--semi-white-color);
@@ -72,7 +102,7 @@ const Label = styled.label`
   }
 `;
 
-const LabelAgree = styled(Label)`
+export const LabelAgree = styled(Label)`
   font-size: 12px;
 
   & input {
@@ -85,7 +115,7 @@ const LabelAgree = styled(Label)`
   }
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   display: block;
   outline: none;
   margin-top: 15px;
@@ -97,7 +127,7 @@ const Input = styled.input`
   border-bottom: 1px solid var(--semi-white-color);
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   display: inline;
   margin: 0 auto;
   padding: 15px 0;
@@ -111,7 +141,7 @@ const Button = styled.button`
   text-transform: uppercase;
 `;
 
-const LoginRef = styled.p`
+export const LoginRef = styled.p`
   /* margin-top: 50px; */
   margin-bottom: 30px;
   text-align: center;
@@ -122,15 +152,3 @@ const LoginRef = styled.p`
     color: ${props => props.theme.mainColor};
   }
 `;
-export {
-  Container,
-  RegisterWrapper,
-  TittleWrapper,
-  Tittle,
-  Form,
-  Label,
-  LabelAgree,
-  Input,
-  Button,
-  LoginRef,
-};
