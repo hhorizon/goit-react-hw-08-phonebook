@@ -1,24 +1,12 @@
 import { useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { ImExit } from 'react-icons/im';
+import { IoChevronBackOutline } from 'react-icons/io5';
 
 import { authOperations, authSelectors } from 'redux/auth';
 import { themeActions } from 'redux/theme';
-import { ImExit } from 'react-icons/im';
-import { IoChevronBackOutline } from 'react-icons/io5';
 import avatar from 'images/user-avatar.png';
-import {
-  Backdrop,
-  ExitBtn,
-  UserMenuList,
-  UserMenuImg,
-  UserMenuName,
-  UserMenuEmail,
-  UserMenuTheme,
-  UserMenuExitBtn,
-} from './UserMenu.styled';
-
-const modalRoot = document.querySelector('#modal-root');
+import * as S from './UserMenu.styled';
 
 export default function UserMenu({ closeModal }) {
   const dispatch = useDispatch();
@@ -102,50 +90,62 @@ export default function UserMenu({ closeModal }) {
     }
   };
 
-  return createPortal(
-    <Backdrop onClick={handleBackdropClick}>
-      <ExitBtn onClick={closeModal}>
+  return (
+    <S.Backdrop onClick={handleBackdropClick}>
+      <S.ExitBtn onClick={closeModal}>
         <IoChevronBackOutline />
-      </ExitBtn>
+      </S.ExitBtn>
 
-      <UserMenuList>
-        <UserMenuImg>
-          <img src={avatar} alt="avatar" height={60} width={60} />
-        </UserMenuImg>
-        <UserMenuName>{userName}</UserMenuName>
-        <UserMenuEmail>{userEmail}</UserMenuEmail>
-        <li>
-          <UserMenuTheme>
-            <li>
-              <button
-                name="fiolet"
-                onClick={e => handleChangeTheme(e)}
-              ></button>
-            </li>
-            <li>
-              <button name="blue" onClick={e => handleChangeTheme(e)}></button>
-            </li>
-            <li>
-              <button name="green" onClick={e => handleChangeTheme(e)}></button>
-            </li>
-            <li>
-              <button name="pink" onClick={e => handleChangeTheme(e)}></button>
-            </li>
-            <li>
-              <button name="red" onClick={e => handleChangeTheme(e)}></button>
-            </li>
-          </UserMenuTheme>
-        </li>
-        <UserMenuExitBtn>
-          <button
-            type="click"
-            onClick={() => dispatch(authOperations.logOut())}
-          >
-            <ImExit />
-          </button>
-        </UserMenuExitBtn>
-      </UserMenuList>
-    </Backdrop>,
-    modalRoot
+      <S.UserMenuList>
+        <S.Box1>
+          <S.UserMenuImg>
+            <img src={avatar} alt="avatar" height={60} width={60} />
+          </S.UserMenuImg>
+          <S.UserMenuName>{userName}</S.UserMenuName>
+          <S.UserMenuEmail>{userEmail}</S.UserMenuEmail>
+        </S.Box1>
+        <S.Box2>
+          <li>
+            <S.UserMenuTheme>
+              <li>
+                <button
+                  name="fiolet"
+                  onClick={e => handleChangeTheme(e)}
+                ></button>
+              </li>
+              <li>
+                <button
+                  name="blue"
+                  onClick={e => handleChangeTheme(e)}
+                ></button>
+              </li>
+              <li>
+                <button
+                  name="green"
+                  onClick={e => handleChangeTheme(e)}
+                ></button>
+              </li>
+              <li>
+                <button
+                  name="pink"
+                  onClick={e => handleChangeTheme(e)}
+                ></button>
+              </li>
+              <li>
+                <button name="red" onClick={e => handleChangeTheme(e)}></button>
+              </li>
+            </S.UserMenuTheme>
+          </li>
+          <S.UserMenuExitBtn>
+            <button
+              type="click"
+              onClick={() => dispatch(authOperations.logOut())}
+            >
+              <ImExit />
+            </button>
+          </S.UserMenuExitBtn>
+        </S.Box2>
+      </S.UserMenuList>
+    </S.Backdrop>
   );
 }

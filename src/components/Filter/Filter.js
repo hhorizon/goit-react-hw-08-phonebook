@@ -1,19 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
-
 import { BiSearch } from 'react-icons/bi';
-import { contactsSelectors, contactsActions } from 'redux/contacts';
-import { StyledFilter, Input } from './Filter.styled';
 
-export default function Filter() {
+import { contactsSelectors, contactsActions } from 'redux/contacts';
+import * as S from './Filter.styled';
+
+export default function Filter({ children }) {
   const dispatch = useDispatch();
   const filter = useSelector(contactsSelectors.getFilter);
 
   return (
-    <StyledFilter>
+    <S.StyledFilter>
       <label>
         <BiSearch />
 
-        <Input
+        <S.Input
           type="text"
           name="filter"
           placeholder="Search"
@@ -21,6 +21,7 @@ export default function Filter() {
           onChange={e => dispatch(contactsActions.changeFilter(e.target.value))}
         />
       </label>
-    </StyledFilter>
+      {children}
+    </S.StyledFilter>
   );
 }

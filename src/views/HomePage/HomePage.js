@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
-// import { useMediaQuery } from 'react-responsive';
+
 import * as S from './HomePage.styled';
 
 export default function HomePage() {
-  // const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
-
   return (
     <S.Container>
       <S.HomeWrapper>

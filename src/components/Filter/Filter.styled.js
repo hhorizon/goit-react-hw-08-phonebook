@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
-const StyledFilter = styled.div`
+export const StyledFilter = styled.div`
   position: relative;
   padding: 15px 15px 20px;
-  padding-right: 50px;
+
+  @media screen and (min-width: 768px) {
+    width: 50%;
+    border-bottom-left-radius: 20px;
+  }
 
   & label {
     position: relative;
@@ -19,7 +23,7 @@ const StyledFilter = styled.div`
   }
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   height: 40px;
   width: 100%;
   padding-left: 35px;
@@ -31,9 +35,15 @@ const Input = styled.input`
   border-radius: 50px;
   outline: none;
 
+  @media screen and (min-width: 768px) {
+    width: 85%;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 90%;
+  }
+
   &::placeholder {
     color: var(--semi-white-color);
   }
 `;
-
-export { StyledFilter, Input };

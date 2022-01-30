@@ -67,7 +67,8 @@ export const TittleWrapper = styled.div`
       width: 30px;
     }
 
-    &:hover svg {
+    &:hover svg,
+    &:focus svg {
       color: ${props => props.theme.mainColor};
     }
   }
@@ -97,6 +98,11 @@ export const Form = styled.form`
     font-size: 16px;
     color: var(--semi-white-color);
     cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: ${props => props.theme.mainColor};
+    }
   }
 `;
 
@@ -134,6 +140,7 @@ export const Button = styled.button`
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
+  cursor: pointer;
 `;
 
 export const RegisterRef = styled.p`

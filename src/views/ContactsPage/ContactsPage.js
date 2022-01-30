@@ -1,49 +1,71 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { IoIosAddCircle } from 'react-icons/io';
-import { contactsOperations } from 'redux/contacts';
+
 import ContactsBar from 'components/ContactsBar';
 import Filter from 'components/Filter';
 import ContactsList from 'components/ContactsList';
 import Modal from 'components/Modal';
 import AddContactMenu from 'components/AddContactMenu';
-import {
-  Container,
-  BarWrapper,
-  ContactsWrapepr,
-  AddBtn,
-} from './ContactsPage.styled';
+import InfoContactMenu from 'components/InfoContactMenu';
+import { contactsOperations } from 'redux/contacts';
+import * as S from './ContactsPage.styled';
 
 export default function ContactsPage() {
   const dispatch = useDispatch();
   const [showAddModal, setShowAddModal] = useState(false);
+  const [selectedContact, setSelectedContact] = useState(null);
 
   useEffect(() => {
     dispatch(contactsOperations.fetchContacts());
-  });
+  }, [dispatch]);
+
+  const openAddModal = () => {
+    setShowAddModal(true);
+  };
 
   const closeAddModal = () => {
     setShowAddModal(false);
   };
 
+  const openInfoModal = selectedContact => {
+    setSelectedContact(selectedContact);
+  };
+
+  const closeInfoModal = () => {
+    setSelectedContact(null);
+  };
+
   return (
-    <Container>
-      <ContactsWrapepr>
-        <BarWrapper>
+    <S.Container>
+      <S.ContactsWrapepr>
+        <S.BarWrapper>
           <ContactsBar />
-          <Filter />
-          <AddBtn onClick={() => setShowAddModal(true)}>
-            <IoIosAddCircle />
-          </AddBtn>
-        </BarWrapper>
-        <ContactsList />
+
+          <Filter>
+            <S.AddBtn onClick={openAddModal}>
+              <IoIosAddCircle />
+            </S.AddBtn>
+          </Filter>
+        </S.BarWrapper>
+
+        <ContactsList openInfoModal={openInfoModal} />
+
         {showAddModal && (
           <Modal closeModal={closeAddModal}>
             <AddContactMenu closeModal={closeAddModal} />
           </Modal>
         )}
-      </ContactsWrapepr>
-    </Container>
+
+        {selectedContact && (
+          <Modal closeModal={closeInfoModal}>
+            <InfoContactMenu
+              closeModal={closeInfoModal}
+              contact={selectedContact}
+            />
+          </Modal>
+        )}
+      </S.ContactsWrapepr>
+    </S.Container>
   );
 }

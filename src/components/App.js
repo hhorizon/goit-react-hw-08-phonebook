@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
@@ -6,12 +6,22 @@ import { ThemeProvider } from 'styled-components';
 
 import PrivatRoute from 'views/PrivatRoute';
 import PublicRoute from 'views/PublicRoute';
-import HomePage from 'views/HomePage';
-import LoginPage from 'views/LoginPage';
-import RegisterPage from 'views/RegisterPage';
-import ContactsPage from 'views/ContactsPage';
+import Loader from './Loader';
 import { authOperations, authSelectors } from 'redux/auth';
 import { themeSelectors } from 'redux/theme';
+
+const HomePage = lazy(() =>
+  import('views/HomePage' /* webpackChunkName: "HomePage" */)
+);
+const LoginPage = lazy(() =>
+  import('views/LoginPage' /* webpackChunkName: "LoginPage" */)
+);
+const RegisterPage = lazy(() =>
+  import('views/RegisterPage' /* webpackChunkName: "RegisterPage" */)
+);
+const ContactsPage = lazy(() =>
+  import('views/ContactsPage' /* webpackChunkName: "ContactsPage" */)
+);
 
 export function App() {
   const dispatch = useDispatch();
@@ -25,9 +35,11 @@ export function App() {
     dispatch(authOperations.refreshCurrentUser());
   }, [dispatch]);
 
-  return (
-    !isFetchingCurrentUser && (
-      <ThemeProvider theme={theme}>
+  return isFetchingCurrentUser ? (
+    <Loader />
+  ) : (
+    <ThemeProvider theme={theme}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route
             path="/"
@@ -65,8 +77,9 @@ export function App() {
             }
           ></Route>
         </Routes>
-        <Toaster />
-      </ThemeProvider>
-    )
+      </Suspense>
+
+      <Toaster />
+    </ThemeProvider>
   );
 }

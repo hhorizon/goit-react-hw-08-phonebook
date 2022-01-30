@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
-
-import { contactsOperations } from 'redux/contacts';
 import { IoChevronBackOutline } from 'react-icons/io5';
-import avatar from 'images/contact-avatar.png';
-import { ExitBtn, Form, Label, Input, Button } from './AddContactMenu.styled';
 
-export default function AddContactMenu({ closeModal }) {
+import { contactsOperations, contactsSelectors } from 'redux/contacts';
+import avatar from 'images/contact-avatar.png';
+import * as S from './AddContactMenu.styled';
+
+export default function AddContactMenu({ closeModal, showAddModal }) {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(contactsSelectors.getContacts);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -27,6 +28,12 @@ export default function AddContactMenu({ closeModal }) {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (contacts.find(contact => contact.name === name)) {
+      toast.error(`${name} is already in contacts.`);
+      return;
+    }
+
     dispatch(contactsOperations.addContact({ name, number }));
     toast.success(`Contact ${name} has been added.`);
     setName('');
@@ -35,16 +42,16 @@ export default function AddContactMenu({ closeModal }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <ExitBtn onClick={closeModal}>
+    <S.Form onSubmit={handleSubmit} showAddModal={showAddModal}>
+      <S.ExitBtn type="button" onClick={closeModal}>
         <IoChevronBackOutline />
-      </ExitBtn>
+      </S.ExitBtn>
 
       <img src={avatar} alt="avatar" width={120} height={120} />
 
-      <Label>
+      <S.Label>
         <p>Name</p>
-        <Input
+        <S.Input
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -53,10 +60,10 @@ export default function AddContactMenu({ closeModal }) {
           value={name}
           onChange={handleChange}
         />
-      </Label>
-      <Label>
+      </S.Label>
+      <S.Label>
         <p>Number</p>
-        <Input
+        <S.Input
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -65,8 +72,8 @@ export default function AddContactMenu({ closeModal }) {
           value={number}
           onChange={handleChange}
         />
-      </Label>
-      <Button type="submit">Add</Button>
-    </Form>
+      </S.Label>
+      <S.Button type="submit">Add</S.Button>
+    </S.Form>
   );
 }

@@ -1,26 +1,14 @@
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { contactsSelectors } from 'redux/contacts';
 import ContactsListItem from 'components/ContactsListItem';
-import Modal from 'components/Modal';
-import InfoContactMenu from 'components/InfoContactMenu';
-import { List } from './ContactsList.styled';
+import { contactsSelectors } from 'redux/contacts';
+import * as S from './ContactsList.styled';
 
-export default function ContactsList() {
-  const [selectedContact, setSelectedContact] = useState(null);
+export default function ContactsList({ openInfoModal }) {
   const contacts = useSelector(contactsSelectors.getVisibleContacts);
 
-  const openInfoModal = selectedContact => {
-    setSelectedContact(selectedContact);
-  };
-
-  const closeInfoModal = () => {
-    setSelectedContact(null);
-  };
-
   return (
-    <List>
+    <S.List>
       {contacts &&
         contacts.map(contact => (
           <ContactsListItem
@@ -29,15 +17,6 @@ export default function ContactsList() {
             openModal={openInfoModal}
           />
         ))}
-
-      {selectedContact && (
-        <Modal closeModal={closeInfoModal}>
-          <InfoContactMenu
-            closeModal={closeInfoModal}
-            contact={selectedContact}
-          />
-        </Modal>
-      )}
-    </List>
+    </S.List>
   );
 }

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 import { IoChevronBackOutline } from 'react-icons/io5';
+
 import { authOperations } from 'redux/auth';
 import * as S from './LoginPage.styled';
 

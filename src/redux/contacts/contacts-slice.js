@@ -18,6 +18,9 @@ const contatcsSlice = createSlice({
     [contactsOperation.fetchContacts.fulfilled](state, { payload }) {
       state.items = payload;
     },
+    [contactsOperation.addContact.fulfilled](state, { payload }) {
+      state.items = [...state.items, payload];
+    },
     [contactsOperation.deleteContact.fulfilled](state, { payload }) {
       state.items = state.items.filter(({ id }) => id !== payload);
     },

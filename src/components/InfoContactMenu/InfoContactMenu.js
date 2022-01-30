@@ -1,23 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
-
-import { contactsOperations } from 'redux/contacts';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { FiSave } from 'react-icons/fi';
 import { AiFillDelete } from 'react-icons/ai';
 import { RiMessage2Fill, RiPhoneFill } from 'react-icons/ri';
+
+import { contactsOperations } from 'redux/contacts';
 import avatar from 'images/contact-avatar.png';
-import {
-  List,
-  Item,
-  ExitBtn,
-  DeleteBtn,
-  Form,
-  Label,
-  Input,
-  Button,
-} from './InfoContactMenu.styled';
+import * as S from './InfoContactMenu.styled';
 
 export default function InfoContactMenu({ contact, closeModal }) {
   const dispatch = useDispatch();
@@ -52,20 +43,20 @@ export default function InfoContactMenu({ contact, closeModal }) {
   };
 
   return (
-    <Form onSubmit={handleChangeContact}>
-      <ExitBtn type="button" onClick={closeModal}>
+    <S.Form onSubmit={handleChangeContact}>
+      <S.ExitBtn type="button" onClick={closeModal}>
         <IoChevronBackOutline />
-      </ExitBtn>
+      </S.ExitBtn>
 
-      <DeleteBtn type="button" onClick={handleDeleteContact}>
+      <S.DeleteBtn type="button" onClick={handleDeleteContact}>
         <AiFillDelete />
-      </DeleteBtn>
+      </S.DeleteBtn>
 
       <img src={avatar} alt="avatar" width={120} height={120} />
 
-      <Label>
+      <S.Label>
         <p>Name</p>
-        <Input
+        <S.Input
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -74,10 +65,10 @@ export default function InfoContactMenu({ contact, closeModal }) {
           value={name}
           onChange={handleChange}
         />
-      </Label>
-      <Label>
+      </S.Label>
+      <S.Label>
         <p>Number</p>
-        <Input
+        <S.Input
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -86,24 +77,24 @@ export default function InfoContactMenu({ contact, closeModal }) {
           value={number}
           onChange={handleChange}
         />
-      </Label>
-      <List>
-        <Item>
-          <Button type="button">
+      </S.Label>
+      <S.List>
+        <S.Item>
+          <S.Button type="button">
             <RiPhoneFill />
-          </Button>
-        </Item>
-        <Item>
-          <Button type="button">
+          </S.Button>
+        </S.Item>
+        <S.Item>
+          <S.Button type="button">
             <RiMessage2Fill />
-          </Button>
-        </Item>
-        <Item>
-          <Button type="submit">
+          </S.Button>
+        </S.Item>
+        <S.Item>
+          <S.Button type="submit">
             <FiSave />
-          </Button>
-        </Item>
-      </List>
-    </Form>
+          </S.Button>
+        </S.Item>
+      </S.List>
+    </S.Form>
   );
 }

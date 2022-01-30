@@ -3,7 +3,6 @@ import fone768 from 'images/fone-768.jpg';
 import fone1200 from 'images/fone-1200.jpg';
 
 export const Container = styled.div`
-  /* padding: 0 20px; */
   background-image: url(${fone768});
   background-size: cover;
 
@@ -68,7 +67,8 @@ export const TittleWrapper = styled.div`
       width: 30px;
     }
 
-    &:hover svg {
+    &:hover svg,
+    &:focus svg {
       color: ${props => props.theme.mainColor};
     }
   }
@@ -107,11 +107,13 @@ export const LabelAgree = styled(Label)`
 
   & input {
     margin-right: 5px;
+    cursor: pointer;
   }
 
   & span {
     font-size: 12px;
     color: ${props => props.theme.mainColor};
+    cursor: pointer;
   }
 `;
 
@@ -139,6 +141,7 @@ export const Button = styled.button`
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
+  cursor: pointer;
 `;
 
 export const LoginRef = styled.p`
