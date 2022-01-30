@@ -66,6 +66,7 @@ export default function ContactsPage() {
           </Modal>
         )}
       </S.ContactsWrapepr>
+      <S.Mess>*adaptive and responsive layout</S.Mess>
     </S.Container>
   );
 }

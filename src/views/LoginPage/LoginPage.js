@@ -76,6 +76,7 @@ export default function LoginPage() {
           Don't have an Account? <Link to="/register">Sign Up</Link>
         </S.RegisterRef>
       </S.LoginWrapper>
+      <S.Mess>*adaptive and responsive layout</S.Mess>
     </S.Container>
   );
 }

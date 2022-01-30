@@ -17,6 +17,7 @@ export default function HomePage() {
           </S.NavItem>
         </S.NavList>
       </S.HomeWrapper>
+      <S.Mess>*adaptive and responsive layout</S.Mess>
     </S.Container>
   );
 }

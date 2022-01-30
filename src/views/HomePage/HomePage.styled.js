@@ -83,3 +83,13 @@ export const NavItem = styled.li`
     text-transform: uppercase;
   }
 `;
+
+export const Mess = styled.p`
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`;

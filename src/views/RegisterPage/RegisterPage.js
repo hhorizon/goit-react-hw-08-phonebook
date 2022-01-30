@@ -92,6 +92,7 @@ export default function RegisterPage() {
           Already have an Account? <Link to="/login">Sign In</Link>
         </S.LoginRef>
       </S.RegisterWrapper>
+      <S.Mess>*adaptive and responsive layout</S.Mess>
     </S.Container>
   );
 }
