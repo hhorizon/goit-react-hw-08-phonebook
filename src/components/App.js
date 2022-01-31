@@ -48,7 +48,7 @@ export function App() {
                 <HomePage />
               </PublicRoute>
             }
-          ></Route>
+          />
 
           <Route
             path="/login"
@@ -57,7 +57,7 @@ export function App() {
                 <LoginPage />
               </PublicRoute>
             }
-          ></Route>
+          />
 
           <Route
             path="/register"
@@ -66,7 +66,7 @@ export function App() {
                 <RegisterPage />
               </PublicRoute>
             }
-          ></Route>
+          />
 
           <Route
             path="/contacts"
@@ -75,7 +75,7 @@ export function App() {
                 <ContactsPage />
               </PrivatRoute>
             }
-          ></Route>
+          />
         </Routes>
       </Suspense>
 

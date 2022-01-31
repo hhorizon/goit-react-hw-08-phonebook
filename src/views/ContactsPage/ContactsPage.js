@@ -61,7 +61,7 @@ export default function ContactsPage() {
           <Modal closeModal={closeInfoModal}>
             <InfoContactMenu
               closeModal={closeInfoModal}
-              contact={selectedContact}
+              selectedContact={selectedContact}
             />
           </Modal>
         )}

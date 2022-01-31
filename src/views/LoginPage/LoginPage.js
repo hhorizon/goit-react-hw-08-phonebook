@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { IoChevronBackOutline } from 'react-icons/io5';
 
 import { authOperations } from 'redux/auth';
@@ -8,29 +9,22 @@ import * as S from './LoginPage.styled';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState({ email: '', password: '' });
 
   const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'email':
-        return setEmail(value);
-
-      case 'password':
-        return setPassword(value);
-
-      default:
-        return;
-    }
+    setUser(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (email !== '' && password !== '') {
-      dispatch(authOperations.logIn({ email, password }));
+    if (user.email === '') {
+      return toast.error('Enter email.');
+    } else if (user.password === '') {
+      return toast.error('Enter password.');
     }
-    setEmail('');
-    setPassword('');
+
+    dispatch(authOperations.logIn(user));
+    setUser({ email: '', password: '' });
   };
 
   return (
@@ -51,7 +45,7 @@ export default function LoginPage() {
             <S.Input
               type="email"
               name="email"
-              value={email}
+              value={user.email}
               onChange={handleChange}
             />
           </S.Label>
@@ -62,7 +56,7 @@ export default function LoginPage() {
             <S.Input
               type="password"
               name="password"
-              value={password}
+              value={user.password}
               onChange={handleChange}
             />
           </S.Label>

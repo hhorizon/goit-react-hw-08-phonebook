@@ -10,35 +10,28 @@ import { contactsOperations } from 'redux/contacts';
 import avatar from 'images/contact-avatar.png';
 import * as S from './InfoContactMenu.styled';
 
-export default function InfoContactMenu({ contact, closeModal }) {
+export default function InfoContactMenu({ selectedContact, closeModal }) {
   const dispatch = useDispatch();
-  const [name, setName] = useState(contact.name);
-  const [number, setNumber] = useState(contact.number);
+  const [contact, setContact] = useState({
+    name: selectedContact.name,
+    number: selectedContact.number,
+  });
 
   const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'name':
-        return setName(value);
-
-      case 'number':
-        return setNumber(value);
-
-      default:
-        return;
-    }
+    setContact(prev => ({ ...prev, [name]: value }));
   };
 
   const handleChangeContact = e => {
     e.preventDefault();
-    const changedContact = { id: contact.id, contact: { name, number } };
+    const changedContact = { id: selectedContact.id, contact };
     dispatch(contactsOperations.changeContact(changedContact));
-    toast.success(`Contact ${name} has been changed.`);
+    toast.success(`Contact ${contact.name} has been changed.`);
     closeModal();
   };
 
   const handleDeleteContact = () => {
-    dispatch(contactsOperations.deleteContact(contact.id));
-    toast.success(`Contact ${contact.name} has been deleted.`);
+    dispatch(contactsOperations.deleteContact(selectedContact.id));
+    toast.success(`Contact ${selectedContact.name} has been deleted.`);
     closeModal();
   };
 
@@ -62,7 +55,7 @@ export default function InfoContactMenu({ contact, closeModal }) {
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          value={name}
+          value={contact.name}
           onChange={handleChange}
         />
       </S.Label>
@@ -74,7 +67,7 @@ export default function InfoContactMenu({ contact, closeModal }) {
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={number}
+          value={contact.number}
           onChange={handleChange}
         />
       </S.Label>

@@ -9,14 +9,13 @@ export default function ContactsList({ openInfoModal }) {
 
   return (
     <S.List>
-      {contacts &&
-        contacts.map(contact => (
-          <ContactsListItem
-            key={contact.id}
-            contact={contact}
-            openModal={openInfoModal}
-          />
-        ))}
+      {contacts?.map(contact => (
+        <ContactsListItem
+          key={contact.id}
+          contact={contact}
+          openModal={openInfoModal}
+        />
+      ))}
     </S.List>
   );
 }

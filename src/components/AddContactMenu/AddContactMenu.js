@@ -7,42 +7,31 @@ import { contactsOperations, contactsSelectors } from 'redux/contacts';
 import avatar from 'images/contact-avatar.png';
 import * as S from './AddContactMenu.styled';
 
-export default function AddContactMenu({ closeModal, showAddModal }) {
+export default function AddContactMenu({ closeModal }) {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [contact, setContact] = useState({
+    name: '',
+    number: '',
+  });
   const contacts = useSelector(contactsSelectors.getContacts);
 
   const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'name':
-        return setName(value);
-
-      case 'number':
-        return setNumber(value);
-
-      default:
-        return;
-    }
+    setContact(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    const { name } = contact;
     if (contacts.find(contact => contact.name === name)) {
-      toast.error(`${name} is already in contacts.`);
-      return;
+      return toast.error(`${name} is already in contacts.`);
     }
-
-    dispatch(contactsOperations.addContact({ name, number }));
+    dispatch(contactsOperations.addContact(contact));
     toast.success(`Contact ${name} has been added.`);
-    setName('');
-    setNumber('');
     closeModal();
   };
 
   return (
-    <S.Form onSubmit={handleSubmit} showAddModal={showAddModal}>
+    <S.Form onSubmit={handleSubmit}>
       <S.ExitBtn type="button" onClick={closeModal}>
         <IoChevronBackOutline />
       </S.ExitBtn>
@@ -57,7 +46,7 @@ export default function AddContactMenu({ closeModal, showAddModal }) {
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          value={name}
+          value={contact.name}
           onChange={handleChange}
         />
       </S.Label>
@@ -69,7 +58,7 @@ export default function AddContactMenu({ closeModal, showAddModal }) {
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={number}
+          value={contact.number}
           onChange={handleChange}
         />
       </S.Label>
